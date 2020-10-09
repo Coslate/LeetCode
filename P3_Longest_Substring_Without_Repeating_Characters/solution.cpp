@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <solution.h>
 #include <cstring>
+#include <string>
 
 #define MAX_CHARS_NUM 128
 
