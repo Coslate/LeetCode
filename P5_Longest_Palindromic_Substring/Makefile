@@ -1,13 +1,13 @@
 #declare variable
 EXE := main
-OBJS := main.o solution.o
+OBJS := solution.o main.o
 OBJS_DIR := .objs
-INC_DIR := ./include 
+INC_DIR := ./include
 
 CC = g++
 INCLUDE_FLAGS = $(foreach d, $(INC_DIR), -I $d)
 #CTAGS_UTIL = /usr/bin/
-CTAGS_UTIL = 
+CTAGS_UTIL = /usr/bin/
 CTAGS_FILES = ./include
 CTAGS_FLAGS = $(foreach d, $(CTAGS_FILES),-a $d/*)
 GCC_EXCLUSIVE_WARNING_OPTIONS =  # -Wno-unused-but-set-variable
@@ -29,6 +29,7 @@ LDFLAGS += -std=c++14 $(ASANFLAGS)
 
 # Rule for `all` (first/default rule):
 all: $(INC_DIR) $(EXE) all_file_tags
+#all: $(INC_DIR) $(EXE)
 
 # Rule for linking the final executable:
 # - $(EXE) depends on all object files in $(OBJS)

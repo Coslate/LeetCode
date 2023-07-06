@@ -1,6 +1,6 @@
 #ifndef _SOLUTION_H_
 #define _SOLUTION_H_
-#include <cstring>
+#include <string>
 
 class Solution {
 public:
