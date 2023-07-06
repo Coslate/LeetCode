@@ -1,6 +1,7 @@
 #include <map>
 #include <vector>
 #include <cstdio>
+#include <cstdlib>
 #include <solution.h>
 
 /*
