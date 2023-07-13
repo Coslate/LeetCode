@@ -8,38 +8,16 @@
 #define MAX_CHARS_NUM 128
 
 int Solution::lengthOfLongestSubstring(std::string s){
-    int max_len     = 0;
-    int current_len = 1;
-    int string_size = s.size();
-    int prev_index  = 0;
-    int *visited = new int [MAX_CHARS_NUM];
-        
-    if(string_size > 0){
-        for(int i=0;i<MAX_CHARS_NUM;++i){
-            visited[i] = -1;
-        }
-        visited[(int)s[0]] = 0;
+    // Two Pointers + Sliding Window | Time: O(n) | Space: O(n)
+    int left_ptr  = 0;
+    std::vector<int> hash_map(128, -1);//keep the latest position of occured char.
+    int longest_window_size = 0;
+
+    for (size_t right_ptr = 0; right_ptr < s.length(); ++right_ptr){
+        left_ptr = std::max(left_ptr, hash_map[(int)s[right_ptr]]+1);
+        hash_map[(int)s[right_ptr]] = (int)right_ptr;
+        longest_window_size = std::max(longest_window_size, (int)right_ptr-left_ptr+1);
     }
-        
-    for(int i=1;i<string_size;++i){
-        prev_index = visited[(int)s[i]];
-            
-        if(prev_index == -1 || i-current_len > prev_index){
-            ++current_len;
-        }else{
-            if(current_len > max_len){
-                max_len = current_len;
-            }
-            current_len = i - prev_index;
-        }
-        
-        visited[(int)s[i]] = i;
-    }
-        
-    if((current_len > max_len) && (string_size > 0)){
-        max_len = current_len;
-    }
-        
-    delete [] visited;
-    return max_len;    
+
+    return longest_window_size;
 }

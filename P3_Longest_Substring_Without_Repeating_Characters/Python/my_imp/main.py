@@ -4,11 +4,10 @@ from solution import Solution
 
 def main():
     sol = Solution()
-    nums = [3, 2, 4]
-    target = 6
+    s = "abcabcbb"
 
-    ans = sol.twoSum(nums, target)
-    print(f"nums = {nums}, target = {target}")
+    ans = sol.lengthOfLongestSubstring(s)
+    print(f"s = {s}")
     print(f"ans = {ans}")
 
 #---------------Execution---------------#
