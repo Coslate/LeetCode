@@ -8,7 +8,7 @@
 
 int main(){
     //Declare final solution container.
-    std::string input_s = "abcabcbb";
+    std::string input_s = "babad";
 
     //Calculation body
     Solution sol_obj;

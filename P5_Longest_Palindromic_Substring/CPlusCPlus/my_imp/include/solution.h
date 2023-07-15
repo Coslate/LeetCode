@@ -7,9 +7,6 @@ public:
     Solution(){};
     ~Solution(){};
 
-    void swap(char& ch_a, char& ch_b);
-    void reverseStrRef(std::string& s);
-    std::string reverseStrCpy(const std::string &s);
     std::string longestPalindrome(std::string s);
 };
 
