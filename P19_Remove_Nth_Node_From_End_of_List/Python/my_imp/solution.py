@@ -34,6 +34,9 @@ class LinkedList:
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
         # LinkedList Traversing | Time: O(n) | Space: O(1)
+        if head is None:
+            return None
+
         cur_head = head
         length = 0
         cnt = 0
