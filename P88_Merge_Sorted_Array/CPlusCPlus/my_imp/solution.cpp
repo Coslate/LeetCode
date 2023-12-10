@@ -1,77 +1,40 @@
-#include <map>
-#include <vector>
-#include <cstdio>
 #include <solution.h>
-#include <cstring>
-#include <string>
-#include <iostream>
-#include <algorithm>
 
-LinkedList::~LinkedList(){
-    ListNode *cur_head = head;
-    while(cur_head != NULL){
-        ListNode *next_head = cur_head->next;
-        cur_head->next = NULL;
-        delete cur_head;
-        cur_head = next_head;
-    }
-}
-
-void LinkedList::insertBackNode(const int &val){
-    if(head == NULL){
-        head = new ListNode(val);
-    }else{
-        ListNode *cur_head = head;
-        while(cur_head->next != NULL){
-            cur_head = cur_head->next;
-        }
-        cur_head->next = new ListNode(val);
-    }
-}
-
-void LinkedList::printLinkedList(){
-    ListNode *cur_head = head;
-    std::cout<<"[";
-    while(cur_head != NULL){
-        if(cur_head->next == NULL){
-            std::cout<<cur_head->val;
+void Solution::merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n){
+    //linear merge | Time: O(m+n) | Space: O(m+n)
+    size_t ptr1 = 0;
+    size_t ptr2 = 0;
+    std::vector<int> result_arr;
+    for(size_t i=0; i<nums1.size(); ++i){
+        if(ptr1 == (size_t)m){
+            result_arr.push_back(nums2[ptr2]);
+            ptr2++;
+        }else if(ptr2 == (size_t)n){
+            result_arr.push_back(nums1[ptr1]);
+            ptr1++;
         }else{
-            std::cout<<cur_head->val<<", ";
+            if(nums2[ptr2] < nums1[ptr1]){
+                result_arr.push_back(nums2[ptr2]);
+                ptr2++;
+            }else{
+                result_arr.push_back(nums1[ptr1]);
+                ptr1++;
+            }
         }
-        cur_head = cur_head->next;
     }
-    std::cout<<"]";
+    nums1.assign(result_arr.begin(), result_arr.end());
 }
+void OptSolution::merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n){
+    //linear merge | Time: O(m+n) | Space: O(1)
+    int ptr1 = m-1;
+    int ptr2 = n-1;
+    int k    = m+n-1;
 
-ListNode* Solution::removeNthFromEnd(ListNode* head, int n){
-    // LinkedList Traversing | Time: O(n) | Space: O(1)
-    int length = 0;
-    ListNode *cur_head = head;
-    ListNode *pre_head = head;
-    int del_pos = 0;
-    int cnt = 0;
-
-    while(cur_head != NULL){
-        ++length;
-        cur_head = cur_head->next;
-    }
-
-    del_pos = length-n;
-    cur_head = head;
-
-    if(del_pos == 0){
-        head = head->next;
-    }else{
-        while(cnt < del_pos){
-            pre_head = cur_head;
-            cur_head = cur_head->next;
-            cnt += 1;
+    while( ptr2 >= 0){
+        if(ptr1 >=0 && nums1[ptr1] > nums2[ptr2]){
+            nums1[k--] = nums1[ptr1--];
+        }else{
+            nums1[k--] = nums2[ptr2--];
         }
-        pre_head->next = cur_head->next;
     }
-
-    cur_head->next = NULL;
-    delete cur_head;
-    cur_head = NULL;
-    return head;
 }

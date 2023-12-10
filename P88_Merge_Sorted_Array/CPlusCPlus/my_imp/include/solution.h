@@ -1,38 +1,20 @@
 #ifndef _SOLUTION_H_
 #define _SOLUTION_H_
-
-
-class ListNode {
-    int       val;
-    ListNode *next;
-
-    public:
-        ListNode(): val(0), next(NULL){};
-        ListNode(const int &val): val(val), next(NULL){};
-        friend class LinkedList;
-        friend class Solution;
-};
-
-class LinkedList{
-    ListNode *head;
-
-    public:
-        LinkedList(): head(NULL){};
-        ~LinkedList();
-        void insertBackNode(const int &val);
-        void setHead(ListNode * const in_head){head = in_head;}
-        void printLinkedList();
-        ListNode* getHead(){return head;}
-};
-
-
+#include <vector>
+#include <iostream>
 
 class Solution {
 public:
     Solution(){};
     ~Solution(){};
+    void merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n);
+};
 
-    ListNode* removeNthFromEnd(ListNode* head, int n);
+class OptSolution {
+public:
+    OptSolution(){};
+    ~OptSolution(){};
+    void merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n);
 };
 
 #endif

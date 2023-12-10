@@ -3,6 +3,8 @@
 from solution import *
 
 def main():
+    sol = Solution()
+    sol_opt = OptSolution()
     nums1 = [1,2,3,0,0,0]
     m = 3
     nums2 = [2,5,6]
@@ -13,8 +15,8 @@ def main():
     print(f"nums2 = {nums2}, n = {n}")
 
     print(f"//------Merged-------//")
-    sol = Solution()
-    sol.merge(nums1, m, nums2, n)
+    #sol.merge(nums1, m, nums2, n)
+    sol_opt.merge(nums1, m, nums2, n)
     print(f"nums1 = {nums1}")
     print(f"")
     print(f"")
@@ -29,8 +31,8 @@ def main():
     print(f"nums2 = {nums2}, n = {n}")
 
     print(f"//------Merged-------//")
-    sol = Solution()
-    sol.merge(nums1, m, nums2, n)
+    #sol.merge(nums1, m, nums2, n)
+    sol_opt.merge(nums1, m, nums2, n)
     print(f"nums1 = {nums1}")
     print(f"")
     print(f"")
@@ -45,8 +47,8 @@ def main():
     print(f"nums2 = {nums2}, n = {n}")
 
     print(f"//------Merged-------//")
-    sol = Solution()
-    sol.merge(nums1, m, nums2, n)
+    #sol.merge(nums1, m, nums2, n)
+    sol_opt.merge(nums1, m, nums2, n)
     print(f"nums1 = {nums1}")
     print(f"")
     print(f"")
@@ -61,8 +63,8 @@ def main():
     print(f"nums2 = {nums2}, n = {n}")
 
     print(f"//------Merged-------//")
-    sol = Solution()
-    sol.merge(nums1, m, nums2, n)
+    #sol.merge(nums1, m, nums2, n)
+    sol_opt.merge(nums1, m, nums2, n)
     print(f"nums1 = {nums1}")
     print(f"")
     print(f"")
