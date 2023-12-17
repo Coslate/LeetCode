@@ -14,38 +14,62 @@ int main(){
     OptSolution opt_sol;
     int ans;
 
-    std::vector<int> numbers = {1, 1, 2, 1, 1};
-    int k = 3;
+    std::string s = "QWER";
     std::cout<<"//Case1:"<<std::endl;
     std::cout<<"//-----Original-----//"<<std::endl;
-    std::cout<<"numbers = "<<numbers<<std::endl;
-    std::cout<<"k = "<<k<<std::endl;
+    std::cout<<"s = "<<s<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
-    ans = sol.numberOfSubarrays(numbers, k);
+    ans = sol.balancedString(s);
     std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
 
-    numbers = {2, 4, 6};
-    k = 1;
+    s = "QQWE";
     std::cout<<"//Case2:"<<std::endl;
     std::cout<<"//-----Original-----//"<<std::endl;
-    std::cout<<"numbers = "<<numbers<<std::endl;
-    std::cout<<"k = "<<k<<std::endl;
+    std::cout<<"s = "<<s<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
-    ans = sol.numberOfSubarrays(numbers, k);
+    ans = sol.balancedString(s);
     std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
 
-    numbers = {2, 2, 2, 1, 2, 2, 1, 2, 2, 2};
-    k = 2;
+    s = "QQQW";
     std::cout<<"//Case3:"<<std::endl;
     std::cout<<"//-----Original-----//"<<std::endl;
-    std::cout<<"numbers = "<<numbers<<std::endl;
-    std::cout<<"k = "<<k<<std::endl;
+    std::cout<<"s = "<<s<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
-    ans = sol.numberOfSubarrays(numbers, k);
+    ans = sol.balancedString(s);
+    std::cout<<"ans = "<<ans<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+
+    s = "QQQQ";
+    std::cout<<"//Case4:"<<std::endl;
+    std::cout<<"//-----Original-----//"<<std::endl;
+    std::cout<<"s = "<<s<<std::endl;
+    std::cout<<"//-----Checked-----//"<<std::endl;
+    ans = sol.balancedString(s);
+    std::cout<<"ans = "<<ans<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+
+    s = "WQWRQQQW";
+    std::cout<<"//Case5:"<<std::endl;
+    std::cout<<"//-----Original-----//"<<std::endl;
+    std::cout<<"s = "<<s<<std::endl;
+    std::cout<<"//-----Checked-----//"<<std::endl;
+    ans = sol.balancedString(s);
+    std::cout<<"ans = "<<ans<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+
+    s = "WWEQERQWQWWRWWERQWEQ";
+    std::cout<<"//Case6:"<<std::endl;
+    std::cout<<"//-----Original-----//"<<std::endl;
+    std::cout<<"s = "<<s<<std::endl;
+    std::cout<<"//-----Checked-----//"<<std::endl;
+    ans = sol.balancedString(s);
     std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;

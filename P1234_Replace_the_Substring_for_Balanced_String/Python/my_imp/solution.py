@@ -1,27 +1,26 @@
 from typing import Optional, List
+import collections
 
 class Solution:
-    def atMost(self, nums: List[int], k:int) -> int:
-        #return the number of at most k odd number occured subarray
+    def balancedString(self, s: str) -> int:
+        # Sliding Window | Time: O(n) | Space: O(n)
+        count = collections.Counter(s)
+        s_size = len(s)
+        ans_num = s_size
+        avg_thr = s_size//4
         i = 0
-        nums_of_subarray = 0
 
-        for j in range(len(nums)):
-            k -= ((nums[j])%2)
-            while k < 0:
-                k += (nums[i]%2)
+        for j in range(s_size):
+            count[s[j]] -= 1
+            while i < s_size and all([count['Q'] <= avg_thr, count['R'] <= avg_thr, count['W'] <= avg_thr, count['E'] <= avg_thr]):
+                ans_num = min(ans_num, j-i+1)
+                count[s[i]] += 1
                 i += 1
-            nums_of_subarray += j-i+1
 
-        return nums_of_subarray
-
-    def numberOfSubarrays(self, nums: List[int], k: int) -> int:
-        # Sliding Window | Time: O(n) | Space: O(1)
-        return self.atMost(nums, k) - self.atMost(nums, k-1)
-
+        return ans_num
 
 class OptSolution:
-    def numberOfSubarrays(self, nums: List[int], k: int) -> int:
+    def balancedString(self, s: str) -> int:
         # Sliding Window | Time: O(n) | Space: O(1)
         # Same as above
         pass
