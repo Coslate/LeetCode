@@ -20,6 +20,7 @@ int main(){
     std::cout<<"s = "<<s<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
     ans = sol.balancedString(s);
+    //ans = opt_sol.balancedString(s);
     std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
@@ -30,6 +31,7 @@ int main(){
     std::cout<<"s = "<<s<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
     ans = sol.balancedString(s);
+    //ans = opt_sol.balancedString(s);
     std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
@@ -40,6 +42,7 @@ int main(){
     std::cout<<"s = "<<s<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
     ans = sol.balancedString(s);
+    //ans = opt_sol.balancedString(s);
     std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
@@ -50,6 +53,7 @@ int main(){
     std::cout<<"s = "<<s<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
     ans = sol.balancedString(s);
+    //ans = opt_sol.balancedString(s);
     std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
@@ -60,6 +64,7 @@ int main(){
     std::cout<<"s = "<<s<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
     ans = sol.balancedString(s);
+    //ans = opt_sol.balancedString(s);
     std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
@@ -70,6 +75,7 @@ int main(){
     std::cout<<"s = "<<s<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
     ans = sol.balancedString(s);
+    //ans = opt_sol.balancedString(s);
     std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
