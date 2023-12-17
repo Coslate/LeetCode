@@ -1,7 +1,7 @@
 #include <solution.h>
 
 int Solution::balancedString(std::string s){
-    //Sliding Window | Time: O(n) | Space: O(n), n is the size of nums
+    //Sliding Window | Time: O(n) | Space: O(1), n is the size of nums
     std::unordered_map<std::string, int> count;
     int s_size = (int)s.size();
     int ans_num = s_size;
@@ -28,7 +28,7 @@ int Solution::balancedString(std::string s){
 }
 
 int OptSolution::balancedString(std::string s){
-    //Sliding Window | Time: O(n) | Space: O(n), n is the size of nums
+    //Sliding Window | Time: O(n) | Space: O(1), n is the size of nums
     std::unordered_map<int, int> count;
     int s_size = (int)s.size();
     int ans_num = s_size;

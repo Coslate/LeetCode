@@ -3,7 +3,7 @@ import collections
 
 class Solution:
     def balancedString(self, s: str) -> int:
-        # Sliding Window | Time: O(n) | Space: O(n)
+        # Sliding Window | Time: O(n) | Space: O(1)
         count = collections.Counter(s)
         s_size = len(s)
         ans_num = s_size
