@@ -5,65 +5,46 @@ from solution import *
 def main():
     sol = Solution()
     sol_opt = OptSolution()
-    s = "QWER"
+    nums = [1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0]
+    k = 2
     print(f"//Case1:")
     print(f"//------Original-------//")
-    print(f"s = {s}")
+    print(f"nums = {nums}")
+    print(f"k = {k}")
     print(f"//------Checked-------//")
-    output = sol.balancedString(s)
+    #output = sol.longestOnes(nums, k)
+    output = sol_opt.longestOnes(nums, k)
     print(f"output = {output}")
     print(f"")
     print(f"")
 
-    s = "QQWE"
+
+    nums = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1]
+    k = 3
     print(f"//Case2:")
     print(f"//------Original-------//")
-    print(f"s = {s}")
+    print(f"nums = {nums}")
+    print(f"k = {k}")
     print(f"//------Checked-------//")
-    output = sol.balancedString(s)
+    #output = sol.longestOnes(nums, k)
+    output = sol_opt.longestOnes(nums, k)
     print(f"output = {output}")
     print(f"")
     print(f"")
 
-    s = "QQQW"
+    nums = [0, 0, 0, 1]
+    k = 4
     print(f"//Case3:")
     print(f"//------Original-------//")
-    print(f"s = {s}")
+    print(f"nums = {nums}")
+    print(f"k = {k}")
     print(f"//------Checked-------//")
-    output = sol.balancedString(s)
+    #output = sol.longestOnes(nums, k)
+    output = sol_opt.longestOnes(nums, k)
     print(f"output = {output}")
     print(f"")
     print(f"")
 
-    s = "QQQQ"
-    print(f"//Case4:")
-    print(f"//------Original-------//")
-    print(f"s = {s}")
-    print(f"//------Checked-------//")
-    output = sol.balancedString(s)
-    print(f"output = {output}")
-    print(f"")
-    print(f"")
-
-    s = "WQWRQQQW"
-    print(f"//Case5:")
-    print(f"//------Original-------//")
-    print(f"s = {s}")
-    print(f"//------Checked-------//")
-    output = sol.balancedString(s)
-    print(f"output = {output}")
-    print(f"")
-    print(f"")
-
-    s = "WWEQERQWQWWRWWERQWEQ"
-    print(f"//Case6:")
-    print(f"//------Original-------//")
-    print(f"s = {s}")
-    print(f"//------Checked-------//")
-    output = sol.balancedString(s)
-    print(f"output = {output}")
-    print(f"")
-    print(f"")
 
 #---------------Execution---------------#
 if __name__ == '__main__':

@@ -9,14 +9,14 @@ class Solution {
 public:
     Solution(){};
     ~Solution(){};
-    int balancedString(std::string s);
+    int longestOnes(std::vector<int>& nums, int k);
 };
 
 class OptSolution {
 public:
     OptSolution(){};
     ~OptSolution(){};
-    int balancedString(std::string s);
+    int longestOnes(std::vector<int>& nums, int k);
 };
 
 #endif

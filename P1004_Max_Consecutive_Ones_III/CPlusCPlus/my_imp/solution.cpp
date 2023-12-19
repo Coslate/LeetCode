@@ -1,52 +1,42 @@
 #include <solution.h>
 
-int Solution::balancedString(std::string s){
+int Solution::longestOnes(std::vector<int>& nums, int k){
     //Sliding Window | Time: O(n) | Space: O(1), n is the size of nums
-    std::unordered_map<std::string, int> count;
-    int s_size = (int)s.size();
-    int ans_num = s_size;
-    int avg_thr = s_size/4;
     int i = 0;
+    int ans = -1;
+    int num_size = (int)nums.size();
 
-    for(int j=0; j<s_size; ++j){
-        std::string single_str_s(1, s[j]);
-        count[single_str_s]++;
-    }
+    for(int j = 0; j < num_size; ++j){
+        k -= 1-nums[j];
 
-    for(int j=0; j<s_size; ++j){
-        std::string single_str_j(1, s[j]);
-        count[single_str_j]--;
-        while( (i<s_size) && (count["Q"] <= avg_thr) && (count["R"] <= avg_thr) && (count["W"] <= avg_thr) && (count["E"] <= avg_thr)){
-            std::string single_str_i(1, s[i]);
-            ans_num = std::min(ans_num, j-i+1);
-            count[single_str_i]++;
-            i++;
+        while(k < 0){
+            ans = std::max(ans, j-i);
+            k += 1-nums[i];
+            ++i;
+        }
+
+        if(j == num_size-1){
+            ans = std::max(ans, j-i+1);
         }
     }
 
-    return ans_num;
+    return ans;
 }
 
-int OptSolution::balancedString(std::string s){
+int OptSolution::longestOnes(std::vector<int>& nums, int k){
     //Sliding Window | Time: O(n) | Space: O(1), n is the size of nums
-    std::unordered_map<int, int> count;
-    int s_size = (int)s.size();
-    int ans_num = s_size;
-    int avg_thr = s_size/4;
     int i = 0;
+    int j = 0;
+    int num_size = (int)nums.size();
 
-    for(int j=0; j<s_size; ++j){
-        count[s[j]]++;
-    }
-
-    for(int j=0; j<s_size; ++j){
-        count[s[j]]--;
-        while( (i<s_size) && (count['Q'] <= avg_thr) && (count['R'] <= avg_thr) && (count['W'] <= avg_thr) && (count['E'] <= avg_thr)){
-            ans_num = std::min(ans_num, j-i+1);
-            count[s[i++]]++;
+    for(j = 0; j < num_size; ++j){
+        k -= (1-nums[j]);
+        if(k < 0){
+            k += (1-nums[i]);
+            ++i;
         }
     }
 
-    return ans_num;
+    return j-i;
 }
 
