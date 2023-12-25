@@ -5,41 +5,44 @@ from solution import *
 def main():
     sol = Solution()
     sol_opt = OptSolution()
-    nums = [1, 0, 1, 0, 1]
-    goal = 2
+    board = [["5","3",".",".","7",".",".",".","."]
+            ,["6",".",".","1","9","5",".",".","."]
+            ,[".","9","8",".",".",".",".","6","."]
+            ,["8",".",".",".","6",".",".",".","3"]
+            ,["4",".",".","8",".","3",".",".","1"]
+            ,["7",".",".",".","2",".",".",".","6"]
+            ,[".","6",".",".",".",".","2","8","."]
+            ,[".",".",".","4","1","9",".",".","5"]
+            ,[".",".",".",".","8",".",".","7","9"]]
+
     print(f"//Case1:")
     print(f"//------Original-------//")
-    print(f"nums = {nums}")
-    print(f"goal = {goal}")
+    print(f"board = {board}")
     print(f"//------Checked-------//")
-    output = sol.numSubarraysWithSum(nums, goal)
+    output = sol.isValidSudoku(board)
     print(f"output = {output}")
     print(f"")
     print(f"")
 
-    nums = [0, 0, 0, 0, 0]
-    goal = 0
+    board = [["8","3",".",".","7",".",".",".","."]
+             ,["6",".",".","1","9","5",".",".","."]
+             ,[".","9","8",".",".",".",".","6","."]
+             ,["8",".",".",".","6",".",".",".","3"]
+             ,["4",".",".","8",".","3",".",".","1"]
+             ,["7",".",".",".","2",".",".",".","6"]
+             ,[".","6",".",".",".",".","2","8","."]
+             ,[".",".",".","4","1","9",".",".","5"]
+             ,[".",".",".",".","8",".",".","7","9"]]
+
     print(f"//Case2:")
     print(f"//------Original-------//")
-    print(f"nums = {nums}")
-    print(f"goal = {goal}")
+    print(f"board = {board}")
     print(f"//------Checked-------//")
-    output = sol.numSubarraysWithSum(nums, goal)
+    output = sol.isValidSudoku(board)
     print(f"output = {output}")
     print(f"")
     print(f"")
 
-    nums = [0, 1, 1, 1, 1]
-    goal = 3
-    print(f"//Case3:")
-    print(f"//------Original-------//")
-    print(f"nums = {nums}")
-    print(f"goal = {goal}")
-    print(f"//------Checked-------//")
-    output = sol.numSubarraysWithSum(nums, goal)
-    print(f"output = {output}")
-    print(f"")
-    print(f"")
 
 
 #---------------Execution---------------#
