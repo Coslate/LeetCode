@@ -8,47 +8,55 @@
 
 void printArray(const std::vector<int> &in, const std::string name);
 std::ostream & operator << (std::ostream &out, const std::vector<int> &in);
+std::ostream & operator << (std::ostream &out, const std::vector<std::vector<char>> &in);
 
 int main(){
     Solution sol;
     OptSolution opt_sol;
     int ans;
-    std::vector<int> nums = {1, 0, 1, 0, 1};
-    int goal = 2;
+    std::vector<std::vector<char>> board  = {
+        {'5','3','.','.','7','.','.','.','.'},
+        {'6','.','.','1','9','5','.','.','.'},
+        {'.','9','8','.','.','.','.','6','.'},
+        {'8','.','.','.','6','.','.','.','3'},
+        {'4','.','.','8','.','3','.','.','1'},
+        {'7','.','.','.','2','.','.','.','6'},
+        {'.','6','.','.','.','.','2','8','.'},
+        {'.','.','.','4','1','9','.','.','5'},
+        {'.','.','.','.','8','.','.','7','9'}
+    };
 
     std::cout<<"//Case1:"<<std::endl;
     std::cout<<"//-----Original-----//"<<std::endl;
-    std::cout<<"nums = "<<nums<<std::endl;
-    std::cout<<"goal = "<<goal<<std::endl;
+    std::cout<<"board = "<<board<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
-    ans = sol.numSubarraysWithSum(nums, goal);
+    ans = sol.isValidSudoku(board);
     std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
 
-    nums = {0, 0, 0, 0, 0};
-    goal = 0;
+    board = {
+        {'8','3','.','.','7','.','.','.','.'},
+        {'6','.','.','1','9','5','.','.','.'},
+        {'.','9','8','.','.','.','.','6','.'},
+        {'8','.','.','.','6','.','.','.','3'},
+        {'4','.','.','8','.','3','.','.','1'},
+        {'7','.','.','.','2','.','.','.','6'},
+        {'.','6','.','.','.','.','2','8','.'},
+        {'.','.','.','4','1','9','.','.','5'},
+        {'.','.','.','.','8','.','.','7','9'}
+    };
+
     std::cout<<"//Case2:"<<std::endl;
     std::cout<<"//-----Original-----//"<<std::endl;
-    std::cout<<"nums = "<<nums<<std::endl;
-    std::cout<<"goal = "<<goal<<std::endl;
+    std::cout<<"board = "<<board<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
-    ans = sol.numSubarraysWithSum(nums, goal);
+    ans = sol.isValidSudoku(board);
     std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
 
-    nums = {0, 1, 1, 1, 1};
-    goal = 3;
-    std::cout<<"//Case2:"<<std::endl;
-    std::cout<<"//-----Original-----//"<<std::endl;
-    std::cout<<"nums = "<<nums<<std::endl;
-    std::cout<<"goal = "<<goal<<std::endl;
-    std::cout<<"//-----Checked-----//"<<std::endl;
-    ans = sol.numSubarraysWithSum(nums, goal);
-    std::cout<<"ans = "<<ans<<std::endl;
-    std::cout<<std::endl;
-    std::cout<<std::endl;
+
 
     return EXIT_SUCCESS;
 }
@@ -60,7 +68,7 @@ std::ostream & operator << (std::ostream &out, const std::vector<int> &in){
     if(in_size == 0){
         std::cout<<"]";
     }else{
-        for (size_t i=0; i<in_size; ++i){
+        for (size_t i = 0; i < in_size; ++i){
             if(i == in.size()-1){
                 std::cout<<in[i]<<"]";
             }else{
@@ -68,6 +76,31 @@ std::ostream & operator << (std::ostream &out, const std::vector<int> &in){
             }
         }
     }
+    return out;
+}
+
+std::ostream & operator << (std::ostream &out, const std::vector<std::vector<char>> &in){
+    std::cout<<"["<<std::endl;
+
+    if(in.size() == 0){
+        std::cout<<"]";
+        return out;
+    }
+
+    size_t row_num = in.size();
+    size_t col_num = in[0].size();
+
+    for(size_t i = 0; i < row_num; ++i){
+        std::cout<<"[";
+        for(size_t j = 0; j < col_num; ++j){
+            if(j == col_num-1){
+                std::cout<<in[i][j]<<"]"<<std::endl;
+            }else{
+                std::cout<<in[i][j]<<", ";
+            }
+        }
+    }
+    std::cout<<"]"<<std::endl;
     return out;
 }
 

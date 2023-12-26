@@ -1,32 +1,90 @@
 #include <solution.h>
 
-int Solution::atMost(std::vector<int>& nums, int k){
-    if(k < 0){
-        return 0;
-    }
+bool Solution::rowCheck(std::vector<std::vector<char>>& board, const int row_num, const int col_num){
+    for(int i = 0; i < row_num; ++i){
+        std::unordered_map<int, int> mem_dict;
 
-    int i = 0;
-    int ans = 0;
-    int num_size = (int)nums.size();
-
-    for(int j = 0; j < num_size; ++j){
-        k -= nums[j];
-        while(k < 0){
-            k += nums[i];
-            i++;
+        for(int j = 0; j < col_num; ++j){
+            if(board[i][j] == '.'){
+                continue;
+            }else{
+                if(mem_dict.find(board[i][j]) != mem_dict.end()){
+                    return false;
+                }else{
+                    mem_dict[board[i][j]] = 1;
+                }
+            }
         }
-        ans += (j-i+1);
     }
-    return ans;
+
+    return true;
 }
-int Solution::numSubarraysWithSum(std::vector<int>& nums, int goal){
-    //Sliding Window | Time: O(n) | Space: O(1), n is the size of nums
-    return atMost(nums, goal) - atMost(nums, goal-1);
+bool Solution::colCheck(std::vector<std::vector<char>>& board, const int row_num, const int col_num){
+    for(int j = 0; j < col_num; ++j){
+        std::unordered_map<int, int> mem_dict;
+
+        for(int i = 0; i < row_num; ++i){
+            if(board[i][j] == '.'){
+                continue;
+            }else{
+                if(mem_dict.find(board[i][j]) != mem_dict.end()){
+                    return false;
+                }else{
+                    mem_dict[board[i][j]] = 1;
+                }
+            }
+        }
+    }
+    return true;
+}
+bool Solution::boxCheck(std::vector<std::vector<char>>& board, const int row_num, const int col_num){
+    for(int i = 0; i < 3; ++i){
+        for(int j = 0; j < 3; ++j){
+            std::unordered_map<int, int> mem_dict;
+            int grid_i = i*3;
+            int grid_j = j*3;
+            for(int k = 0; k < 3; ++k){
+                for(int r = 0; r < 3; ++r){
+                    int index_i = grid_i + k;
+                    int index_j = grid_j + r;
+
+                    if(board[index_i][index_j] == '.'){
+                        continue;
+                    }else{
+                        if(mem_dict.find(board[index_i][index_j]) != mem_dict.end()){
+                            return false;
+                        }else{
+                            mem_dict[board[index_i][index_j]] = 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return true;
+}
+bool Solution::isValidSudoku(std::vector<std::vector<char>>& board){
+    //Matrix | Time: O(n) | Space: O(n), n is the size of board
+    int row_num = (int)board.size();
+    int col_num = (int)board[0].size();
+
+    if(!rowCheck(board, row_num, col_num)){
+        return false;
+    }
+    if(!colCheck(board, row_num, col_num)){
+        return false;
+    }
+    if(!boxCheck(board, row_num, col_num)){
+        return false;
+    }
+
+    return true;
 }
 
-int OptSolution::numSubarraysWithSum(std::vector<int>& nums, int goal){
-    //Sliding Window | Time: O(n) | Space: O(1), n is the size of nums
+bool OptSolution::isValidSudoku(std::vector<std::vector<char>>& board){
+    //Matrix | Time: O(n) | Space: O(n), n is the size of board
     Solution sol;
-    return sol.numSubarraysWithSum(nums, goal);
+    return sol.isValidSudoku(board);
 }
 

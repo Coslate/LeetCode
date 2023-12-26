@@ -9,15 +9,17 @@ class Solution {
 public:
     Solution(){};
     ~Solution(){};
-    int numSubarraysWithSum(std::vector<int>& nums, int goal);
-    int atMost(std::vector<int>& nums, int k);
+    bool rowCheck(std::vector<std::vector<char>>& board, const int row_num, const int col_num);
+    bool colCheck(std::vector<std::vector<char>>& board, const int row_num, const int col_num);
+    bool boxCheck(std::vector<std::vector<char>>& board, const int row_num, const int col_num);
+    bool isValidSudoku(std::vector<std::vector<char>>& board);
 };
 
 class OptSolution {
 public:
     OptSolution(){};
     ~OptSolution(){};
-    int numSubarraysWithSum(std::vector<int>& nums, int goal);
+    bool isValidSudoku(std::vector<std::vector<char>>& board);
 };
 
 #endif
