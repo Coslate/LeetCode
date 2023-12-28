@@ -30,7 +30,8 @@ int main(){
     std::cout<<"//-----Original-----//"<<std::endl;
     std::cout<<"board = "<<board<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
-    ans = sol.isValidSudoku(board);
+    //ans = sol.isValidSudoku(board);
+    ans = opt_sol.isValidSudoku(board);
     std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
@@ -51,7 +52,8 @@ int main(){
     std::cout<<"//-----Original-----//"<<std::endl;
     std::cout<<"board = "<<board<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
-    ans = sol.isValidSudoku(board);
+    //ans = sol.isValidSudoku(board);
+    ans = opt_sol.isValidSudoku(board);
     std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;

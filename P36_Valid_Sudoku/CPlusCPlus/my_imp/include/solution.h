@@ -19,6 +19,7 @@ class OptSolution {
 public:
     OptSolution(){};
     ~OptSolution(){};
+    bool getBit(const int x, const int val);
     bool isValidSudoku(std::vector<std::vector<char>>& board);
 };
 
