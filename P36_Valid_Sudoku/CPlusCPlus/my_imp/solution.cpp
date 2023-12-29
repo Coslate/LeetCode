@@ -65,7 +65,7 @@ bool Solution::boxCheck(std::vector<std::vector<char>>& board, const int row_num
     return true;
 }
 bool Solution::isValidSudoku(std::vector<std::vector<char>>& board){
-    //Matrix | Time: O(n^2) | Space: O(n^2), n is the height or widht of the board
+    //Matrix | Time: O(n^2) | Space: O(n^2), n is the height or width of the board
     int row_num = (int)board.size();
     int col_num = (int)board[0].size();
 
@@ -86,7 +86,7 @@ bool OptSolution::getBit(const int x, const int val){
     return (x>>val) & 1;
 }
 bool OptSolution::isValidSudoku(std::vector<std::vector<char>>& board){
-    //Bitmasking | Time: O(n^2) | Space: O(n), n is the height of wieght of the board
+    //Bitmasking | Time: O(n^2) | Space: O(n), n is the height or width of the board
     int row_num = (int)board.size();
     int col_num = (int)board[0].size();
     std::vector<int> row_check_bitarr(row_num);
