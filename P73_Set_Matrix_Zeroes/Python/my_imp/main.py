@@ -5,46 +5,35 @@ from solution import *
 def main():
     sol = Solution()
     sol_opt = OptSolution()
-    board = [["5","3",".",".","7",".",".",".","."]
-            ,["6",".",".","1","9","5",".",".","."]
-            ,[".","9","8",".",".",".",".","6","."]
-            ,["8",".",".",".","6",".",".",".","3"]
-            ,["4",".",".","8",".","3",".",".","1"]
-            ,["7",".",".",".","2",".",".",".","6"]
-            ,[".","6",".",".",".",".","2","8","."]
-            ,[".",".",".","4","1","9",".",".","5"]
-            ,[".",".",".",".","8",".",".","7","9"]]
+    matrix = [
+                [1, 1, 1],
+                [1, 0, 1],
+                [1, 1, 1]
+            ]
 
     print(f"//Case1:")
     print(f"//------Original-------//")
-    print(f"board = {board}")
+    print(f"matrix = {matrix}")
     print(f"//------Checked-------//")
-    #output = sol.isValidSudoku(board)
-    output = sol_opt.isValidSudoku(board)
-    print(f"output = {output}")
+    sol.setZeroes(matrix)
+    print(f"matrix = {matrix}")
     print(f"")
     print(f"")
 
-    board = [["8","3",".",".","7",".",".",".","."]
-             ,["6",".",".","1","9","5",".",".","."]
-             ,[".","9","8",".",".",".",".","6","."]
-             ,["8",".",".",".","6",".",".",".","3"]
-             ,["4",".",".","8",".","3",".",".","1"]
-             ,["7",".",".",".","2",".",".",".","6"]
-             ,[".","6",".",".",".",".","2","8","."]
-             ,[".",".",".","4","1","9",".",".","5"]
-             ,[".",".",".",".","8",".",".","7","9"]]
+    matrix = [
+                [0, 1, 2, 0],
+                [3, 4, 5, 2],
+                [1, 3, 1, 5]
+            ]
 
     print(f"//Case2:")
     print(f"//------Original-------//")
-    print(f"board = {board}")
+    print(f"matrix = {matrix}")
     print(f"//------Checked-------//")
-    #output = sol.isValidSudoku(board)
-    output = sol_opt.isValidSudoku(board)
-    print(f"output = {output}")
+    sol.setZeroes(matrix)
+    print(f"matrix = {matrix}")
     print(f"")
     print(f"")
-
 
 
 #---------------Execution---------------#
