@@ -14,7 +14,7 @@ class Solution:
             matrix[i][index_j] = 0
 
     def setZeroes(self, matrix: List[List[int]]) -> None:
-        # Matrix | Time: O(n^2) | Space: O(n)
+        # Matrix | Time: O(n^2) | Space: O(n^2)
         """
         Do not return anything, modify matrix in-place instead.
         """
@@ -36,8 +36,37 @@ class Solution:
 
 class OptSolution:
     def setZeroes(self, matrix: List[List[int]]) -> None:
-        # Matrix | Time: O(n^2) | Space: O(n)
+        # Matrix | Time: O(n^2) | Space: O(1)
         """
         Do not return anything, modify matrix in-place instead.
         """
-        pass
+        first_row_set_zeroes = False
+        first_col_set_zeroes = False
+        row_num = len(matrix)
+        col_num = len(matrix[0])
+
+        for i in range(row_num):
+            for j in range(col_num):
+                if matrix[i][j] == 0:
+                    if i == 0 :
+                        first_row_set_zeroes = True
+                    if j == 0:
+                        first_col_set_zeroes = True
+
+                    matrix[0][j] = 0
+                    matrix[i][0] = 0
+
+        for i in range(1, row_num):
+            for j in range(1, col_num):
+                if matrix[0][j] == 0 or matrix[i][0] == 0:
+                    matrix[i][j] = 0
+
+        if first_row_set_zeroes:
+            for j in range(col_num):
+                matrix[0][j] = 0
+
+        if first_col_set_zeroes:
+            for i in range(row_num):
+                matrix[i][0] = 0
+
+

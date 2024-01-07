@@ -23,7 +23,8 @@ int main(){
     std::cout<<"//-----Original-----//"<<std::endl;
     std::cout<<"matrix = "<<matrix<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
-    sol.setZeroes(matrix);
+    //sol.setZeroes(matrix);
+    opt_sol.setZeroes(matrix);
     std::cout<<"matrix = "<<matrix<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
@@ -38,7 +39,8 @@ int main(){
     std::cout<<"//-----Original-----//"<<std::endl;
     std::cout<<"matrix2 = "<<matrix2<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
-    sol.setZeroes(matrix2);
+    //sol.setZeroes(matrix2);
+    opt_sol.setZeroes(matrix2);
     std::cout<<"matrix2 = "<<matrix2<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
