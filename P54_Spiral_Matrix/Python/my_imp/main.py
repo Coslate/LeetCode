@@ -6,34 +6,32 @@ def main():
     sol = Solution()
     sol_opt = OptSolution()
     matrix = [
-                [1, 1, 1],
-                [1, 0, 1],
-                [1, 1, 1]
+                [1, 2, 3],
+                [4, 5, 6],
+                [7, 8, 9]
             ]
 
     print(f"//Case1:")
     print(f"//------Original-------//")
     print(f"matrix = {matrix}")
     print(f"//------Checked-------//")
-    #sol.setZeroes(matrix)
-    sol_opt.setZeroes(matrix)
-    print(f"matrix = {matrix}")
+    ans = sol.spiralOrder(matrix)
+    print(f"ans = {ans}")
     print(f"")
     print(f"")
 
     matrix = [
-                [0, 1, 2, 0],
-                [3, 4, 5, 2],
-                [1, 3, 1, 5]
+                [1, 2, 3, 4],
+                [5, 6, 7, 8],
+                [9, 10, 11, 12]
             ]
 
     print(f"//Case2:")
     print(f"//------Original-------//")
     print(f"matrix = {matrix}")
     print(f"//------Checked-------//")
-    #sol.setZeroes(matrix)
-    sol_opt.setZeroes(matrix)
-    print(f"matrix = {matrix}")
+    ans = sol.spiralOrder(matrix)
+    print(f"ans = {ans}")
     print(f"")
     print(f"")
 
