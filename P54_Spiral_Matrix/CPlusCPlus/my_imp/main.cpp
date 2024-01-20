@@ -13,35 +13,34 @@ std::ostream & operator << (std::ostream &out, const std::vector<std::vector<int
 int main(){
     Solution sol;
     OptSolution opt_sol;
+    std::vector<int> ans;
     std::vector<std::vector<int>> matrix  = {
-        {1, 1, 1},
-        {1, 0, 1},
-        {1, 1, 1},
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9},
     };
 
     std::cout<<"//Case1:"<<std::endl;
     std::cout<<"//-----Original-----//"<<std::endl;
     std::cout<<"matrix = "<<matrix<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
-    //sol.setZeroes(matrix);
-    opt_sol.setZeroes(matrix);
-    std::cout<<"matrix = "<<matrix<<std::endl;
+    ans = sol.spiralOrder(matrix);
+    std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
 
     std::vector<std::vector<int>> matrix2  = {
-        {0, 1, 2, 0},
-        {3, 4, 5, 2},
-        {1, 3, 1, 5},
+        {1, 2, 3, 4},
+        {5, 6, 7, 8},
+        {9, 10, 11, 12},
     };
 
     std::cout<<"//Case2:"<<std::endl;
     std::cout<<"//-----Original-----//"<<std::endl;
     std::cout<<"matrix2 = "<<matrix2<<std::endl;
+    ans = sol.spiralOrder(matrix2);
     std::cout<<"//-----Checked-----//"<<std::endl;
-    //sol.setZeroes(matrix2);
-    opt_sol.setZeroes(matrix2);
-    std::cout<<"matrix2 = "<<matrix2<<std::endl;
+    std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
 

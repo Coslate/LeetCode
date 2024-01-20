@@ -1,91 +1,106 @@
 #include <solution.h>
 
-void Solution::setBits(int (&bit_reg)[1250], const int num){
-    int index_group = num/32;
-    int bit = num%32;
-    bit_reg[index_group] |= 1 << bit;
-}
-
-int Solution::getBits(const int (&bit_reg)[1250], const int num){
-    int index_group = num/32;
-    int bit = num%32;
-    return bit_reg[index_group] >> bit & 1;
-}
-
-void Solution::setRowZeroes(const int index_i, const int col_num, std::vector<std::vector<int>>& matrix){
-    for(int j = 0; j < col_num; ++j){
-        matrix[index_i][j] = 0;
-    }
-}
-
-void Solution::setColZeroes(const int index_j, const int row_num, std::vector<std::vector<int>>& matrix){
-    for(int i = 0; i < row_num; ++i){
-        matrix[i][index_j] = 0;
-    }
-}
-
-void Solution::setZeroes(std::vector<std::vector<int>>& matrix){
-    //Matrix | Time: O(n^2) | Space: O(n^2), n is the height or width of the matrix
-    int bit_reg[1250] = {0};//40000/32 = 1250
-    int row_num = (int)matrix.size();
-    int col_num = (int)matrix[0].size();
-
-    for(int i=0; i<row_num; ++i){
-        for(int j=0; j<col_num; ++j){
-            if(matrix[i][j] == 0){
-                int num = i*col_num + j;
-                setBits(bit_reg, num);
-            }
-        }
-    }
-
-    for(int i=0; i<row_num; ++i){
-        for(int j=0; j<col_num; ++j){
-            int num = i*col_num + j;
-            if(getBits(bit_reg, num) == 1){
-                setRowZeroes(i, col_num, matrix);
-                setColZeroes(j, row_num, matrix);
-            }
-        }
-    }
-}
-
-void OptSolution::setZeroes(std::vector<std::vector<int>>& matrix){
+std::vector<int> Solution::spiralOrder(std::vector<std::vector<int>>& matrix){
     //Matrix | Time: O(n^2) | Space: O(1), n is the height or width of the matrix
-    int row_num = (int)matrix.size();
-    int col_num = (int)matrix[0].size();
-    bool first_row_set_zeroes = false;
-    bool first_col_set_zeroes = false;
+    int index_i = 0;
+    int index_j = 0;
+    int row_num = matrix.size();
+    int col_num = matrix[0].size();
+    int count   = 0;
+    int total_element = row_num*col_num;
+    bool go_row = true;
+    bool go_col = false;
+    bool go_inc = true;
+    bool go_dec = false;
+    int incr_cnt = 0;
+    int decr_cnt = 0;
+    int anchor_left  = 0;
+    int anchor_right = col_num - 1;
+    int anchor_up    = 1;
+    int anchor_down  = row_num - 1;
+    std::vector<int> ans_list;
 
-    for(int i = 0; i < row_num; ++i){
-        for(int j = 0; j < col_num; ++j){
-            if(matrix[i][j] == 0){
-                if(i == 0) {first_row_set_zeroes = true;}
-                if(j == 0) {first_col_set_zeroes = true;}
-                matrix[0][j] = 0;
-                matrix[i][0] = 0;
+    while(count < total_element){
+        if(go_row){
+            if(go_inc){
+                while(index_j <= anchor_right){
+                    ans_list.push_back(matrix[index_i][index_j]);
+                    index_j += 1;
+                    count   += 1;
+                }
+                index_j      -= 1;
+                index_i      += 1;
+                anchor_right -= 1;
+                incr_cnt     += 1;
+                if(incr_cnt == 2){
+                    incr_cnt = 0;
+                    go_inc   = false;
+                    go_dec   = true;
+                }
+            }else if(go_dec){
+                while(index_j >= anchor_left){
+                    ans_list.push_back(matrix[index_i][index_j]);
+                    index_j -= 1;
+                    count   += 1;
+                }
+                index_j     += 1;
+                index_i     -= 1;
+                anchor_left += 1;
+                decr_cnt    += 1;
+                if(decr_cnt == 2){
+                    decr_cnt = 0;
+                    go_inc   = true;
+                    go_dec   = false;
+                }
             }
+            go_row = false;
+            go_col = true;
         }
-    }
 
-    for(int i = 1; i < row_num; ++i){
-        for(int j = 1; j < col_num; ++j){
-            if(matrix[0][j] == 0 || matrix[i][0] == 0){
-                matrix[i][j] = 0;
+        if(go_col){
+            if(go_inc){
+                while(index_i <= anchor_down){
+                    ans_list.push_back(matrix[index_i][index_j]);
+                    index_i += 1;
+                    count   += 1;
+                }
+                index_i     -= 1;
+                index_j     -= 1;
+                anchor_down -= 1;
+                incr_cnt    += 1;
+                if(incr_cnt == 2){
+                    incr_cnt = 0;
+                    go_inc   = false;
+                    go_dec   = true;
+                }
+            }else if(go_dec){
+                while(index_i >= anchor_up){
+                    ans_list.push_back(matrix[index_i][index_j]);
+                    index_i -= 1;
+                    count   += 1;
+                }
+                index_i   += 1;
+                index_j   += 1;
+                anchor_up += 1;
+                decr_cnt  += 1;
+                if(decr_cnt == 2){
+                    decr_cnt = 0;
+                    go_inc   = true;
+                    go_dec   = false;
+                }
             }
+
+            go_row = true;
+            go_col = false;
         }
     }
 
-    if(first_row_set_zeroes){
-        for(int j = 0; j < col_num; ++j){
-            matrix[0][j] = 0;
-        }
-    }
+    return ans_list;
+}
 
-    if(first_col_set_zeroes){
-        for(int i = 0; i < row_num; ++i){
-            matrix[i][0] = 0;
-        }
-    }
+std::vector<int> OptSolution::spiralOrder(std::vector<std::vector<int>>& matrix){
+    //Matrix | Time: O(n^2) | Space: O(1), n is the height or width of the matrix
+    std::vector<int> a;
+    return a;
 }
 
