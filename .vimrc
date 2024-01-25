@@ -66,22 +66,25 @@ filetype plugin indent on    " required
 " Tagbar Settings
 "====================================================================
 " Open and close the tagbar separately
-nmap <F7> :TagbarToggle<CR>
+
+let g:TrinityToggleNERDTreeWinPos = "left"
+nnoremap <F7> :TagbarToggle<CR>
+
 
 "====================================================================
 " Trinity Settings
 "====================================================================
 " Open and close all the three plugins on the same time
-nmap <F8>  :TrinityToggleAll<CR>
+nnoremap <F8> :TrinityToggleAll<CR>
 
 " Open and close the Source Explorer separately
-nmap <F9>  :TrinityToggleSourceExplorer<CR>
+nnoremap <F9> :TrinityToggleSourceExplorer<CR>
 
 " Open and close the Taglist separately
-nmap <F10> :TrinityToggleTagList<CR>
+nnoremap <F10> :TrinityToggleTagList<CR>
 
 " Open and close the NERD Tree separately
-nmap <F1> :TrinityToggleNERDTree<CR>
+nnoremap <F1> :NERDTreeToggle<CR>
 
 
 "====================================================================
@@ -191,4 +194,3 @@ let g:ycm_show_diagnostics_ui = 0
 "====================================================================
 nnoremap <S-Left> :tabprevious<CR>
 nnoremap <S-Right> :tabnext<CR>
-
