@@ -24,23 +24,24 @@ int main(){
     std::cout<<"//-----Original-----//"<<std::endl;
     std::cout<<"matrix = "<<matrix<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
-    ans = sol.spiralOrder(matrix);
-    std::cout<<"ans = "<<ans<<std::endl;
+    sol.rotate(matrix);
+    std::cout<<"ans = "<<matrix<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
 
     std::vector<std::vector<int>> matrix2  = {
-        {1, 2, 3, 4},
-        {5, 6, 7, 8},
-        {9, 10, 11, 12},
+        {5,   1,  9, 11},
+        {2,   4,  8, 10},
+        {13,  3,  6,  7},
+        {15, 14, 12, 16},
     };
 
     std::cout<<"//Case2:"<<std::endl;
     std::cout<<"//-----Original-----//"<<std::endl;
     std::cout<<"matrix2 = "<<matrix2<<std::endl;
-    ans = sol.spiralOrder(matrix2);
+    sol.rotate(matrix2);
+    std::cout<<"ans = "<<matrix2<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
-    std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
 
