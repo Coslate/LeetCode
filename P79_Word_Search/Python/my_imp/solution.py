@@ -14,11 +14,8 @@ class Solution:
         while len(stack_dfs) > 0:
             (idx_i, idx_j) = stack_dfs.pop()
             visit[idx_i][idx_j] = True
-            print(f"idx_i, idx_j = ({idx_i}, {idx_j})")
-            print(f"stack_dfs = {stack_dfs}, word_idx = {word_idx}")
 
             if board[idx_i][idx_j] == word[word_idx]:
-                print(f"({idx_i}, {idx_j}), {board[idx_i][idx_j]}")
                 word_idx += 1
                 if word_idx == word_len:
                     ans = True
@@ -45,8 +42,10 @@ class Solution:
             for j in range(col_num):
                 if visit[i][j] == False:
                     ans = self.DFSCall(board, word, i, j, visit, row_num, col_num)
+                    if ans:
+                        return True
 
-        return ans
+        return False
 
 class OptSolution:
     def exist(self, board: List[List[str]], word: str) -> bool:

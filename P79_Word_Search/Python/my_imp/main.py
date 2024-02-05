@@ -24,23 +24,54 @@ def main():
     print(f"")
     print(f"")
 
-'''
-    matrix = [
-                [5,  1,  9,  11],
-                [2,  4,  8,  10],
-                [13, 3,  6,   7],
-                [15, 14, 12, 16]
+    board = [
+                ["A","B","C","E"],
+                ["S","F","C","S"],
+                ["A","D","E","E"]
             ]
+    word = "SEE"
 
     print(f"//Case2:")
     print(f"//------Original-------//")
-    print(f"matrix = {matrix}")
+    print(f"board = {board}")
+    print(f"word  = {word}")
     print(f"//------Checked-------//")
-    sol.rotate(matrix)
-    print(f"ans = {matrix}")
+    ans = sol.exist(board, word)
+    print(f"ans = {ans}")
     print(f"")
     print(f"")
-'''
+
+    board = [
+                ["A","B","C","E"],
+                ["S","F","C","S"],
+                ["A","D","E","E"]
+            ]
+    word = "ABCB"
+
+    print(f"//Case3:")
+    print(f"//------Original-------//")
+    print(f"board = {board}")
+    print(f"word  = {word}")
+    print(f"//------Checked-------//")
+    ans = sol.exist(board, word)
+    print(f"ans = {ans}")
+    print(f"")
+    print(f"")
+
+    board = [
+                ["a","b"]
+            ]
+    word = "ba"
+
+    print(f"//Case4:")
+    print(f"//------Original-------//")
+    print(f"board = {board}")
+    print(f"word  = {word}")
+    print(f"//------Checked-------//")
+    ans = sol.exist(board, word)
+    print(f"ans = {ans}")
+    print(f"")
+    print(f"")
 
 
 #---------------Execution---------------#
