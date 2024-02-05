@@ -5,21 +5,26 @@ from solution import *
 def main():
     sol = Solution()
     sol_opt = OptSolution()
-    matrix = [
-                [1, 2, 3],
-                [4, 5, 6],
-                [7, 8, 9]
-            ]
+
+    board = [
+                ["A","B","C","E"],
+                ["S","F","C","S"],
+                ["A","D","E","E"]
+    ]
+
+    word = "ABCCED"
 
     print(f"//Case1:")
     print(f"//------Original-------//")
-    print(f"matrix = {matrix}")
+    print(f"board = {board}")
+    print(f"word  = {word}")
     print(f"//------Checked-------//")
-    sol.rotate(matrix)
-    print(f"ans = {matrix}")
+    ans = sol.exist(board, word)
+    print(f"ans = {ans}")
     print(f"")
     print(f"")
 
+'''
     matrix = [
                 [5,  1,  9,  11],
                 [2,  4,  8,  10],
@@ -35,6 +40,7 @@ def main():
     print(f"ans = {matrix}")
     print(f"")
     print(f"")
+'''
 
 
 #---------------Execution---------------#
