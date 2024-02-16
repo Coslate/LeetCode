@@ -15,6 +15,10 @@ class Solution:
         while len(stack_dfs) > 0:
             (idx_i, idx_j) = stack_dfs.pop()
             visit[idx_i][idx_j] = True
+            up_got    = False
+            down_got  = False
+            right_got = False
+            left_got  = False
             #print(f"pop({idx_i}, {idx_j})")
 
             if board[idx_i][idx_j] == word[word_idx]:

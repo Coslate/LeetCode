@@ -111,7 +111,7 @@ def main():
                 ["A","B","C","E"],
                 ["S","F","E","S"],
                 ["A","D","E","E"]
-            ]    
+            ]
     word = "ABCESEEEFS"
 
     print(f"//Case7:")
