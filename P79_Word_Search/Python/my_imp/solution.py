@@ -3,6 +3,10 @@ import collections
 import math
 
 class Solution:
+    def resetProcess(self, ans_list: List[List[str]]) -> None:
+        while len(ans_list) > 0:
+            (idx_i, idx_j) = ans_list.pop()
+
     def DFSCall(self, board: List[List[str]], word: str, i: int, j: int, visit: List[List[bool]], row_num: int, col_num: int) -> bool:
         idx_i     = i
         idx_j     = j
@@ -57,8 +61,7 @@ class Solution:
                     #print(f"append: ({check_idx_i}, {check_idx_j})")
 
                 if (not up_got) and (not down_got) and (not left_got) and (not right_got):
-                    (_i, _j) = stack_dfs.pop()
-                    (_k, _m) = ans_list.pop()
+                    self.resetProcess(ans_list)
 
         return ans
 
