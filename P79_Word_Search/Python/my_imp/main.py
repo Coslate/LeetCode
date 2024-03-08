@@ -125,6 +125,24 @@ def main():
     print(f"")
 
 
+    board = [
+                ["a","a","a","a"],
+                ["a","a","a","a"],
+                ["a","a","a","a"]
+            ]
+    word = "aaaaaaaaaaaaa"
+
+    print(f"//Case8:")
+    print(f"//------Original-------//")
+    print(f"board = {board}")
+    print(f"word  = {word}")
+    print(f"//------Checked-------//")
+    ans = sol.exist(board, word)
+    print(f"ans = {ans}")
+    print(f"")
+    print(f"")
+
+
 #---------------Execution---------------#
 if __name__ == '__main__':
     main()
