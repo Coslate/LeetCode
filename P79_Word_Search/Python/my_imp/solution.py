@@ -1,9 +1,9 @@
-from typing import Optional, List
+from typing import Optional, List, Dict
 import collections
 import math
 
 class Solution:
-    def resetProcess(self, ans_list: List[List[str]], has_unvisit_neighbor: List[List[bool]], visit: List[List[bool]], stack_dfs: List[tuple[int, int]], word_idx: int) -> int:
+    def resetProcess(self, ans_list: List[tuple[int, int]], has_unvisit_neighbor: List[List[bool]], visit: List[List[bool]], stack_dfs: List[tuple[int, int]], word_idx: int) -> int:
         while len(ans_list) > 0:
             (idx_i, idx_j) = ans_list[-1]
             if has_unvisit_neighbor[idx_i][idx_j]:
@@ -29,7 +29,7 @@ class Solution:
         word_len  = len(word)
         ans       = False
         ans_list  = []
-        subnode_dict = {}
+        subnode_dict: Dict[tuple[int, int], List[tuple[int, int]]] = {}
 
         while len(stack_dfs) > 0:
             (idx_i, idx_j) = stack_dfs.pop()
@@ -232,3 +232,4 @@ class OptSolution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         # Matrix | Time: O(n^2) | Space: O(1)
         pass
+        return False
