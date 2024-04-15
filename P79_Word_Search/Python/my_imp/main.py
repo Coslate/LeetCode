@@ -20,7 +20,9 @@ def main():
     print(f"word  = {word}")
     print(f"//------Checked-------//")
     ans = sol.exist(board, word)
+    ans_opt = sol_opt.exist(board, word)
     print(f"ans = {ans}")
+    print(f"ans_opt = {ans_opt}")
     print(f"")
     print(f"")
 
@@ -37,7 +39,9 @@ def main():
     print(f"word  = {word}")
     print(f"//------Checked-------//")
     ans = sol.exist(board, word)
+    ans_opt = sol_opt.exist(board, word)
     print(f"ans = {ans}")
+    print(f"ans_opt = {ans_opt}")
     print(f"")
     print(f"")
 
@@ -54,7 +58,9 @@ def main():
     print(f"word  = {word}")
     print(f"//------Checked-------//")
     ans = sol.exist(board, word)
+    ans_opt = sol_opt.exist(board, word)
     print(f"ans = {ans}")
+    print(f"ans_opt = {ans_opt}")
     print(f"")
     print(f"")
 
@@ -69,7 +75,9 @@ def main():
     print(f"word  = {word}")
     print(f"//------Checked-------//")
     ans = sol.exist(board, word)
+    ans_opt = sol_opt.exist(board, word)
     print(f"ans = {ans}")
+    print(f"ans_opt = {ans_opt}")
     print(f"")
     print(f"")
 
@@ -85,7 +93,9 @@ def main():
     print(f"word  = {word}")
     print(f"//------Checked-------//")
     ans = sol.exist(board, word)
+    ans_opt = sol_opt.exist(board, word)
     print(f"ans = {ans}")
+    print(f"ans_opt = {ans_opt}")
     print(f"")
     print(f"")
 
@@ -103,7 +113,9 @@ def main():
     print(f"word  = {word}")
     print(f"//------Checked-------//")
     ans = sol.exist(board, word)
+    ans_opt = sol_opt.exist(board, word)
     print(f"ans = {ans}")
+    print(f"ans_opt = {ans_opt}")
     print(f"")
     print(f"")
 
@@ -120,7 +132,9 @@ def main():
     print(f"word  = {word}")
     print(f"//------Checked-------//")
     ans = sol.exist(board, word)
+    ans_opt = sol_opt.exist(board, word)
     print(f"ans = {ans}")
+    print(f"ans_opt = {ans_opt}")
     print(f"")
     print(f"")
 
@@ -138,7 +152,9 @@ def main():
     print(f"word  = {word}")
     print(f"//------Checked-------//")
     ans = sol.exist(board, word)
+    ans_opt = sol_opt.exist(board, word)
     print(f"ans = {ans}")
+    print(f"ans_opt = {ans_opt}")
     print(f"")
     print(f"")
 

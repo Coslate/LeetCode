@@ -8,6 +8,7 @@ class Solution:
             (idx_i, idx_j) = ans_list[-1]
             if has_unvisit_neighbor[idx_i][idx_j]:
                 stack_dfs.append((idx_i, idx_j))
+                visit[idx_i][idx_j] = False
                 ans_list.pop()
                 #if((idx_i, idx_j) == (0, 0)):
                     #print(f"====================GOT (0, 0)=========================")
@@ -34,7 +35,7 @@ class Solution:
         while len(stack_dfs) > 0:
             (idx_i, idx_j) = stack_dfs.pop()
             if visit[idx_i][idx_j]:
-                next
+                continue
 
             visit[idx_i][idx_j] = True
             up_got    = False
@@ -57,10 +58,12 @@ class Solution:
                     if len(subnode_dict[(idx_i, idx_j)]) == 0:
                         has_unvisit_neighbor[idx_i][idx_j] = False
 
-                    #print(f"In Search subnodes: ")
-                    #print(f"stack_dfs = {stack_dfs}")
-                    #print(f"subnode_dict = {subnode_dict}")
-                    #print(f"has_unvisit_neighbor = {has_unvisit_neighbor}")
+                    '''
+                    print(f"In Search subnodes: ")
+                    print(f"stack_dfs = {stack_dfs}")
+                    print(f"subnode_dict = {subnode_dict}")
+                    print(f"has_unvisit_neighbor = {has_unvisit_neighbor}")
+                    '''
                 else:
                     check_idx_i = idx_i+1
                     check_idx_j = idx_j
@@ -177,14 +180,17 @@ class Solution:
                         else:
                             subnode_dict[(idx_i, idx_j)] = [sub_node1, sub_node2, sub_node3]
 
-                    #print(f"down_got  = {down_got}")
-                    #print(f"right_got = {right_got}")
-                    #print(f"up_got    = {up_got}")
-                    #print(f"left_got  = {left_got}")
+                    '''
+                    print(f"down_got  = {down_got}")
+                    print(f"right_got = {right_got}")
+                    print(f"up_got    = {up_got}")
+                    print(f"left_got  = {left_got}")
+                    '''
 
                     #print(f"subnode_dict = {subnode_dict}")
                     if (not up_got) and (not down_got) and (not left_got) and (not right_got):
                         word_idx -= 1
+
                         '''
                         print(f"---Before resetProcess()---")
                         print(f"({idx_i}, {idx_j})")
@@ -213,7 +219,7 @@ class Solution:
         return ans
 
     def exist(self, board: List[List[str]], word: str) -> bool:
-        # Matrix | Time: O(n^2) | Space: O(1)
+        # Matrix | Time: O(m*n*(15^l)) | Space: O(mn+l)
         row_num   = len(board)
         col_num   = len(board[0])
 
@@ -229,7 +235,32 @@ class Solution:
         return False
 
 class OptSolution:
+    def DFS(self, board: List[List[str]], word: str, d: int, i: int, j: int, row_num: int, col_num: int) -> bool:
+        if i < 0 or i > row_num-1 or j < 0 or j > col_num-1:
+            return False
+        elif board[i][j] != word[d]:
+            return False
+        elif d == len(word)-1:
+            return True
+        else:
+            org = board[i][j]
+            board[i][j] = -1
+
+            result = self.DFS(board, word, d+1, i, j+1, row_num, col_num) | \
+                     self.DFS(board, word, d+1, i, j-1, row_num, col_num) | \
+                     self.DFS(board, word, d+1, i+1, j, row_num, col_num) | \
+                     self.DFS(board, word, d+1, i-1, j, row_num, col_num)
+            board[i][j] = org
+
+            return result
+
     def exist(self, board: List[List[str]], word: str) -> bool:
-        # Matrix | Time: O(n^2) | Space: O(1)
-        pass
+        # Matrix | Time: O(m*n*4^l) | Space: O(m*n + l)
+        row_num   = len(board)
+        col_num   = len(board[0])
+
+        for i in range(row_num):
+            for j in range(col_num):
+                if self.DFS(board, word, 0, i, j, row_num, col_num):
+                    return True
         return False
