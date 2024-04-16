@@ -6,49 +6,86 @@
 #include <cstring>
 #include <string>
 
-void printArray(const std::vector<int> &in, const std::string name);
-std::ostream & operator << (std::ostream &out, const std::vector<int> &in);
-std::ostream & operator << (std::ostream &out, const std::vector<std::vector<int>> &in);
+void printArray(const std::vector<char> &in, const std::string name);
+std::ostream & operator << (std::ostream &out, const std::vector<char> &in);
+std::ostream & operator << (std::ostream &out, const std::vector<std::vector<char>> &in);
 
 int main(){
     Solution sol;
     OptSolution opt_sol;
-    std::vector<int> ans;
-    std::vector<std::vector<int>> matrix  = {
-        {1, 2, 3},
-        {4, 5, 6},
-        {7, 8, 9},
+    bool ans;
+    std::vector<std::vector<char>> board  = {
+        {'A', 'B', 'C', 'E'},
+        {'S', 'F', 'C', 'S'},
+        {'A', 'D', 'E', 'E'}
     };
+    std::string word = "ABCCED";
 
     std::cout<<"//Case1:"<<std::endl;
     std::cout<<"//-----Original-----//"<<std::endl;
-    std::cout<<"matrix = "<<matrix<<std::endl;
+    std::cout<<"board = "<<board<<std::endl;
+    std::cout<<"word = "<<word<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
-    sol.rotate(matrix);
-    std::cout<<"ans = "<<matrix<<std::endl;
+    ans = sol.exist(board, word);
+    std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
 
-    std::vector<std::vector<int>> matrix2  = {
-        {5,   1,  9, 11},
-        {2,   4,  8, 10},
-        {13,  3,  6,  7},
-        {15, 14, 12, 16},
+    std::vector<std::vector<char>> board2  = {
+        {'A','B','C','E'},
+        {'S','F','C','S'},
+        {'A','D','E','E'}
     };
+    std::string word2 = "SEE";
 
     std::cout<<"//Case2:"<<std::endl;
     std::cout<<"//-----Original-----//"<<std::endl;
-    std::cout<<"matrix2 = "<<matrix2<<std::endl;
-    sol.rotate(matrix2);
-    std::cout<<"ans = "<<matrix2<<std::endl;
+    std::cout<<"board2 = "<<board2<<std::endl;
+    std::cout<<"word2 = "<<word2<<std::endl;
     std::cout<<"//-----Checked-----//"<<std::endl;
+    ans = sol.exist(board2, word2);
+    std::cout<<"ans = "<<ans<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+
+    std::vector<std::vector<char>> board3  = {
+        {'A','B','C','E'},
+        {'S','F','C','S'},
+        {'A','D','E','E'}
+    };
+    std::string word3 = "ABCB";
+
+    std::cout<<"//Case3:"<<std::endl;
+    std::cout<<"//-----Original-----//"<<std::endl;
+    std::cout<<"board3 = "<<board3<<std::endl;
+    std::cout<<"word3 = "<<word3<<std::endl;
+    std::cout<<"//-----Checked-----//"<<std::endl;
+    ans = sol.exist(board3, word3);
+    std::cout<<"ans = "<<ans<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+
+    std::vector<std::vector<char>> board4  = {
+        {'A','B','C','E'},
+        {'S','F','E','S'},
+        {'A','D','E','E'}
+    };
+    std::string word4 = "ABCESEEEFS";
+
+    std::cout<<"//Case4:"<<std::endl;
+    std::cout<<"//-----Original-----//"<<std::endl;
+    std::cout<<"board4 = "<<board4<<std::endl;
+    std::cout<<"word4 = "<<word4<<std::endl;
+    std::cout<<"//-----Checked-----//"<<std::endl;
+    ans = sol.exist(board4, word4);
+    std::cout<<"ans = "<<ans<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
 
     return EXIT_SUCCESS;
 }
 
-std::ostream & operator << (std::ostream &out, const std::vector<int> &in){
+std::ostream & operator << (std::ostream &out, const std::vector<char> &in){
     std::cout<<"[";
     size_t in_size = in.size();
 
@@ -66,7 +103,7 @@ std::ostream & operator << (std::ostream &out, const std::vector<int> &in){
     return out;
 }
 
-std::ostream & operator << (std::ostream &out, const std::vector<std::vector<int>> &in){
+std::ostream & operator << (std::ostream &out, const std::vector<std::vector<char>> &in){
     std::cout<<"["<<std::endl;
 
     if(in.size() == 0){
@@ -91,7 +128,7 @@ std::ostream & operator << (std::ostream &out, const std::vector<std::vector<int
     return out;
 }
 
-void printArray(const std::vector<int> &in, std::string name){
+void printArray(const std::vector<char> &in, std::string name){
     std::cout<<name<<" = "<<"[";
     for (size_t i=0; i<in.size(); ++i){
         if(i == in.size()-1){

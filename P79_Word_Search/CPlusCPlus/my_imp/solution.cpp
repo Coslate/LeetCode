@@ -1,32 +1,43 @@
 #include <solution.h>
 
-void Solution::rotate(std::vector<std::vector<int>>& matrix){
-    //Matrix | Time: O(n^2) | Space: O(1), n is the height or width of the matrix
-    int row_num = matrix.size();
-    int col_num = row_num;
+bool Solution::DFS(std::vector<std::vector<char>>& board, std::string word, int d, const int i, const int j, const int row_num, const int col_num){
+    if(i < 0 or i > row_num-1 or j < 0 or j > col_num-1){
+        return false;
+    }else if(board[i][j] != word[d]){
+        return false;
+    }else if(d == int(word.length())-1){
+        return true;
+    }else{
+        char org = board[i][j];
+        board[i][j] = 0;
+        bool result = DFS(board, word, d+1, i, j+1, row_num, col_num) |
+                      DFS(board, word, d+1, i, j-1, row_num, col_num) |
+                      DFS(board, word, d+1, i+1, j, row_num, col_num) |
+                      DFS(board, word, d+1, i-1, j, row_num, col_num);
+        board[i][j] = org;
 
-    //Transpose
-    for(int i=0; i<row_num; ++i){
-        for(int j=i+1; j<col_num; ++j){
-            int tmp = matrix[i][j];
-            matrix[i][j] = matrix[j][i];
-            matrix[j][i] = tmp;
-        }
-    }
-
-    //Reverse
-    for(int i=0; i<row_num; ++i){
-        for(int j=0; j<col_num/2; ++j){
-            int tmp = matrix[i][j];
-            matrix[i][j] = matrix[i][col_num-j-1];
-            matrix[i][col_num-j-1] = tmp;
-        }
+        return result;
     }
 }
 
-void OptSolution::rotate(std::vector<std::vector<int>>& matrix){
-    //Matrix | Time: O(n^2) | Space: O(1), n is the height or width of the matrix
+bool Solution::exist(std::vector<std::vector<char>>& board, std::string word){
+    //Matrix | Time: O(m*n*4^l) | Space: O(m*n + l)
+    int row_num = board.size();
+    int col_num = board[0].size();
+
+    for(int i=0; i<row_num; ++i){
+        for(int j=0; j<col_num; ++j){
+            if(DFS(board, word, 0, i, j, row_num, col_num)){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool OptSolution::exist(std::vector<std::vector<char>>& board, std::string word){
+    //Matrix | Time: O(m*n*4^l) | Space: O(m*n + l)
     Solution sol;
-    sol.rotate(matrix);
+    return sol.exist(board, word);
 }
 

@@ -9,14 +9,15 @@ class Solution {
 public:
     Solution(){};
     ~Solution(){};
-    void rotate(std::vector<std::vector<int>>& matrix);
+    bool DFS(std::vector<std::vector<char>>& board, std::string word, int d, const int i, const int j, const int row_num, const int col_num);
+    bool exist(std::vector<std::vector<char>>& board, std::string word);
 };
 
 class OptSolution {
 public:
     OptSolution(){};
     ~OptSolution(){};
-    void rotate(std::vector<std::vector<int>>& matrix);
+    bool exist(std::vector<std::vector<char>>& board, std::string word);
 };
 
 #endif
