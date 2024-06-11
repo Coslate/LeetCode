@@ -1,70 +1,51 @@
 #include <solution.h>
 #include <cmath>
 #include <cstdlib>
+#include <climits>
 
-size_t number_of_digits(int n) {
-    std::ostringstream strs;
-    strs << n;
-    return strs.str().size();
-}
-
-void print_matrix(const int M[nmax][nmax], size_t n, size_t m) {
-    size_t max_len_per_column[nmax];
-
-    for (size_t j = 0; j < m; ++j) {
-        size_t max_len {};
-
-        for (size_t i = 0; i < n; ++i){
-            const auto num_length {number_of_digits(M[i][j])};
-
-            if (num_length > max_len){
-                max_len = num_length;
-            }
+void Solution::printArray(const int* const &in, std::string name, const int in_size){
+    std::cout<<name<<" = "<<"[";
+    for (int i=0; i<in_size; ++i){
+        if(i == in_size-1){
+            std::cout<<in[i]<<"]"<<std::endl;
+        }else{
+            std::cout<<in[i]<<", ";
         }
-
-        max_len_per_column[j] = max_len;
     }
 
-    for (size_t i = 0; i < n; ++i)
-        for (size_t j = 0; j < m; ++j)
-            std::cout << (j == 0 ? "\n| " : "") << std::setw(max_len_per_column[j]) << M[i][j] << (j == m - 1 ? " |" : " ");
-
-    std::cout << '\n';
 }
 
-int Solution::climbStairs(int n){
-    //Dynamic Programming | Time: O(1) | Space: O(1), n is the input length of array
-    //P(n) = P(n-1) + P(n-2), P(1) = 1, P(2) = 2, P(3) = 3, P(4) = 5, P(5) = 8
-    if(n == 1){
-        return 1;
-    }else if(n == 2){
-        return 2;
-    }
-
+int Solution::coinChange(std::vector<int>& coins, int amount) {
+    //Dynamic Programming | Time: O(n) | Space: O(n), n is the input length of coins
+    //P(n) = min(P(n-c)+1, P(n)), foreach c in coins.
+    int *dp = new int [amount+1] ();
+    std::fill_n(dp, amount+1, INT_MAX);
+    dp[0] = 0;
     int ans = 0;
-    int* p = new int[n+1]();
-    p[1] = 1;
-    p[2] = 2;
 
-    for(int i=3; i < n+1; ++i){
-        p[i] = p[i-1]+p[i-2];
+    for(size_t coin_index=0; coin_index < coins.size(); ++coin_index){
+        for(int i=coins[coin_index]; i < amount+1; ++i){
+            int result = (dp[i-coins[coin_index]] == INT_MAX) ? INT_MAX : dp[i-coins[coin_index]] + 1; //prevent overflow
+            dp[i] = std::min(result, dp[i]);
+        }
     }
-    ans = p[n];
-    delete [] p;
 
+    if (dp[amount] < INT_MAX){
+        ans = dp[amount];
+    }else{
+        ans = -1;
+    }
+
+    delete [] dp;
     return ans;
 }
 
-int OptSolution::climbStairs(int n){
-    //Dynamic Programming | Time: O(logn) | Space: O(1), n is the input length of array
-    //P(n) = P(n-1) + P(n-2), P(1) = 1, P(2) = 2, P(3) = 3, P(4) = 5, P(5) = 8
-    //Declare long type of matrix for situations that multipling result may surpass the integer range.
-    long q[2][2] = {
-                       {1, 1},
-                       {1, 0}
-    };
-    long res[2][2] {};
-    matrixPower<long, 2, 2>(q, res, n);
-    return res[0][0];
+int OptSolution::coinChange(std::vector<int>& coins, int amount) {
+    //Dynamic Programming | Time: O(1) | Space: O(1), n is the input length of array
+    //P(n) = min(P(n-c)+1, P(n)), foreach c in coins.
+
+    Solution sol;
+    return sol.coinChange(coins, amount);
 }
+
 

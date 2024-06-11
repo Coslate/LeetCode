@@ -3,29 +3,19 @@
 #include <iostream>
 #include <vector>
 
-constexpr size_t nmax {2};
-size_t number_of_digits(int n);
-void print_matrix(const int M[nmax][nmax], size_t n, size_t m);
-
 class Solution {
 public:
     Solution(){};
     ~Solution(){};
-    int climbStairs(int n);
+    int coinChange(std::vector<int>& coins, int amount);
+    void printArray(const int* const &in, std::string name, const int in_size);
 };
 
 class OptSolution {
 public:
     OptSolution(){};
     ~OptSolution(){};
-    int climbStairs(int n);
-    template<class T, std::size_t rows, std::size_t cols>
-    void matrixPower(const T (&q)[rows][cols], T (&res)[rows][cols], const int k);
-    template<class T, std::size_t rows, std::size_t cols>
-    void matrixMultiply(const T (&a)[rows][cols], const T (&b)[cols][rows], T res[rows][rows]);
-    template<class T, std::size_t rows, std::size_t cols>
-    void copyData(const T (&q)[rows][cols], T (&res)[rows][cols]);
+    int coinChange(std::vector<int>& coins, int amount);
 };
 
-#include <solution.imp.h>
 #endif

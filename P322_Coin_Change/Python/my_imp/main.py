@@ -6,25 +6,40 @@ def main():
     sol = Solution()
     sol_opt = OptSolution()
 
-    nums = 2
+    coins = [1, 2, 5]
+    amount = 11
     print(f"//Case1:")
     print(f"//------Original-------//")
-    print(f"nums = {nums}")
+    print(f"coins = {coins}, amount = {amount}")
     print(f"//------Checked-------//")
-    output = sol.climbStairs(nums)
-    output_opt = sol_opt.climbStairs(nums)
+    output = sol.coinChange(coins, amount)
+    output_opt = sol_opt.coinChange(coins, amount)
     print(f"output = {output}")
     print(f"output_opt = {output_opt}")
     print(f"")
     print(f"")
 
-    nums = 3
+    coins = [2]
+    amount = 3
     print(f"//Case2:")
     print(f"//------Original-------//")
-    print(f"nums = {nums}")
+    print(f"coins = {coins}, amount = {amount}")
     print(f"//------Checked-------//")
-    output = sol.climbStairs(nums)
-    output_opt = sol_opt.climbStairs(nums)
+    output = sol.coinChange(coins, amount)
+    output_opt = sol_opt.coinChange(coins, amount)
+    print(f"output = {output}")
+    print(f"output_opt = {output_opt}")
+    print(f"")
+    print(f"")
+
+    coins = [1]
+    amount = 0
+    print(f"//Case3:")
+    print(f"//------Original-------//")
+    print(f"coins = {coins}, amount = {amount}")
+    print(f"//------Checked-------//")
+    output = sol.coinChange(coins, amount)
+    output_opt = sol_opt.coinChange(coins, amount)
     print(f"output = {output}")
     print(f"output_opt = {output_opt}")
     print(f"")
