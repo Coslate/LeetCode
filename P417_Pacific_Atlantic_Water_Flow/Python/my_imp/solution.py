@@ -42,24 +42,32 @@ class Solution:
                 neighbor_pt = (cur_pt[0]+direction[0], cur_pt[1]+direction[1])
                 if not self.withinRange(rows, cols, neighbor_pt):
                     continue
-                if neighbor_pt not in pacific_visited and neighbor_pt not in pacific_queue and heights[cur_pt[0]][cur_pt[1]] <= heights[neighbor_pt[0]][neighbor_pt[1]]:
-                    pacific_queue.append(neighbor_pt)
+                if neighbor_pt in pacific_visited:
+                    continue
+                if heights[cur_pt[0]][cur_pt[1]] > heights[neighbor_pt[0]][neighbor_pt[1]]:
+                    continue
+                pacific_queue.append(neighbor_pt)
 
         #BFS - atlantic
         while len(atlantic_queue) != 0:
             cur_pt = atlantic_queue.pop(0)
             atlantic_visited[cur_pt] = 1
-            if cur_pt in pacific_visited:
-                visited_twice.append(list(cur_pt))
             for direction in neighbor_vec:
                 neighbor_pt = (cur_pt[0]+direction[0], cur_pt[1]+direction[1])
                 if not self.withinRange(rows, cols, neighbor_pt):
                     continue
-                if neighbor_pt not in atlantic_visited and neighbor_pt not in atlantic_queue and heights[cur_pt[0]][cur_pt[1]] <= heights[neighbor_pt[0]][neighbor_pt[1]]:
-                    atlantic_queue.append(neighbor_pt)
+                if neighbor_pt in atlantic_visited:
+                    continue
+                if heights[cur_pt[0]][cur_pt[1]] > heights[neighbor_pt[0]][neighbor_pt[1]]:
+                    continue
+                atlantic_queue.append(neighbor_pt)
+
+        for i in range(rows):
+            for j in range(cols):
+                if (i, j) in pacific_visited and (i, j) in atlantic_visited:
+                    visited_twice.append([i, j])
 
         return visited_twice
-
 
 class OptSolution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
