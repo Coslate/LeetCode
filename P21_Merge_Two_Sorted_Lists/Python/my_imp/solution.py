@@ -13,8 +13,9 @@ class ListNode:
 
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        # LinkedList Traversal | Time: O(n) | Space: O(1),
-        # n is the number of nodes in the two linked lists.
+        # LinkedList Traversal | Time: O(n+m) | Space: O(1),
+        # n is the number of nodes in list1.
+        # m is the number of nodes in list2.
 
         #Step0. Return None if both heads are None.
         if list1 is None and list2 is None: return None
@@ -58,8 +59,9 @@ class Solution:
 
 class OptSolution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        # LinkedList Traversal | Time: O(n) | Space: O(1),
-        # n is the number of nodes in the two linked lists.
+        # LinkedList Traversal | Time: O(n+m) | Space: O(1),
+        # n is the number of nodes in list1.
+        # m is the number of nodes in list2.
 
         #Step0. Return None if both heads are None.
         if list1 is None and list2 is None: return None
