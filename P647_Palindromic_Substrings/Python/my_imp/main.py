@@ -12,7 +12,9 @@ def main():
     print(f"s = {s}")
     print(f"//------Checked-------//")
     output = sol.countSubstrings(s)
+    output_opt = sol_opt.countSubstrings(s)
     print(f"output = {output}")
+    print(f"output_opt = {output_opt}")
     print(f"")
     print(f"")
 
@@ -22,7 +24,9 @@ def main():
     print(f"s = {s}")
     print(f"//------Checked-------//")
     output = sol.countSubstrings(s)
+    output_opt = sol_opt.countSubstrings(s)
     print(f"output = {output}")
+    print(f"output_opt = {output_opt}")
     print(f"")
     print(f"")
 
