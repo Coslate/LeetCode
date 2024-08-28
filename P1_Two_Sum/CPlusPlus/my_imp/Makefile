@@ -2,7 +2,7 @@
 EXE := main
 OBJS := solution.o main.o
 OBJS_DIR := .objs
-INC_DIR := ./include
+INC_DIR := ./include .
 
 CC = g++
 INCLUDE_FLAGS = $(foreach d, $(INC_DIR), -I $d)
@@ -29,7 +29,7 @@ LDFLAGS += -std=c++14 $(ASANFLAGS)
 
 # Rule for `all` (first/default rule):
 all: $(INC_DIR) $(EXE) all_file_tags
-#all: $(INC_DIR) $(EXE)
+mac_all: $(INC_DIR) $(EXE)
 
 # Rule for linking the final executable:
 # - $(EXE) depends on all object files in $(OBJS)
