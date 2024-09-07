@@ -1,7 +1,6 @@
 from typing import Optional, List, Tuple, Dict, Deque, Set, Self
 import collections
 import math
-from numpy.linalg import matrix_power
 import numpy as np
 import heapq
 
@@ -82,12 +81,68 @@ class Solution:
                 queue.append(top_root.right)
 
         return result_list
+    
+    def serializeTree(self, root: Optional[TreeNode], serialized_tree: List[str]) -> None:
+        if root is None:
+            serialized_tree.append("#")
+            return serialized_tree
+
+        serialized_tree.append("^")
+        serialized_tree.append(str(root.val))
+        self.serializeTree(root.left, serialized_tree)
+        self.serializeTree(root.right, serialized_tree)
+
+    def genNext(self, patt: str) -> List[int]:
+        patt_len = len(patt)
+        next = [-1]*patt_len
+
+        i = 1
+        while i < patt_len:
+            prev_match_loc = next[i-1]
+            while patt[prev_match_loc+1] != patt[i] and prev_match_loc >= 0:
+                prev_match_loc = next[prev_match_loc]
+            if patt[prev_match_loc+1] == patt[i]:
+                next[i] = prev_match_loc+1
+            else:
+                next[i] = -1
+            i += 1
+
+        return next
+
+    def kmp(self, haystack: str, needle: str) -> int:
+        target_len = len(haystack)
+        patt_len   = len(needle)
+
+        # generate next[] for efficiently resuming comparison
+        next = self.genNext(needle)
+
+        # compare haystack with needle
+        pos_i = 0
+        pos_j = 0
+        while pos_i < target_len and pos_j < patt_len:
+            if haystack[pos_i] == needle[pos_j]:
+                pos_i += 1
+                pos_j += 1
+            elif pos_j == 0: # first match fails
+                pos_i += 1
+            else: # middle match fails
+                pos_j = next[pos_j-1]+1
+
+        if pos_j >= patt_len:
+            return pos_i - pos_j
+        else:
+            return -1
 
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         # Iterative Traversing | O(n) | O(n)
         # Where n is the size of nodes in the Binary Tree.        
-        pass
-        
+        serialized_root_tree_list = []
+        serialized_sub_tree_list = []
+        self.serializeTree(root, serialized_root_tree_list)
+        self.serializeTree(subRoot, serialized_sub_tree_list)
+        serialized_root_tree_str = "".join(serialized_root_tree_list)
+        serialized_sub_tree_str = "".join(serialized_sub_tree_list)
+        return self.kmp(serialized_root_tree_str, serialized_sub_tree_str) != -1
 
 class OptSolution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:        
