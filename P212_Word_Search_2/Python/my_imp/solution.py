@@ -87,7 +87,10 @@ class WordDictionary:
 
 class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
-        WORD_KEY = "$"
+        # Time: O(M(4*3^(L-1))) | Space: O(M)
+        # Where M is the number of cells in the board.
+        # L is the maximum length of words.
+        # https://leetcode.com/problems/word-search-ii/editorial/
 
         trie = {}
         for word in words:
