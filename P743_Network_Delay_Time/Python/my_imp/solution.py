@@ -9,6 +9,7 @@ class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:    
         # Time: O(E+N+ElogE) | Space: O(N+E)
         # Where N is n, and E is the number of edges in times, and E = N^2, so Time could be O(N^2logN), and Space could be O(N^2).
+        # https://leetcode.com/problems/network-delay-time/editorial/?envType=problem-list-v2&envId=plakya4j
         adj_list = defaultdict(list)
         for edges in times:
             adj_list[edges[0]].append([edges[1], edges[2]])
